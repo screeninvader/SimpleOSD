@@ -1,4 +1,4 @@
-SimpleOSD is tool writte in C++ for displaying text over the desktop.
+SimpleOSD is tool writte in C++ for displaying text on top of the desktop.
 
 Usage: simpleOSD [options] text
 
