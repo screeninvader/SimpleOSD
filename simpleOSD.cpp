@@ -58,7 +58,7 @@ void initialize(int v_offset, int h_offset, int h_align, int v_align, int timeou
 }
 
 void printUsage() {
-  cerr << "Usage: osd [options] text" << endl; 
+  cerr << "Usage: simpleOSD [options] text" << endl; 
   cerr << "Options:" << endl;
   cerr << "\t-v   vertical alignment: 0 = top, 1 = middle, 2 = bottom" << endl;
   cerr << "\t-h   horizontal alignment: 0 = left, 1 = center, 2 = right" << endl;
@@ -78,7 +78,7 @@ int main(int argc, char *argv[])
   int h_align = 1;
   int v_align = 2;
   string colour = "white";
-  string font = "-misc-topaz a500a1000a2000-medium-r-normal--0-240-0-0-c-0-iso8859-1";
+  string font = "-misc-dejavu sans-*-*-*-*-17-*-*-*-*-*-*-*";
   string text;
   
   while (optind < argc) {
@@ -110,7 +110,8 @@ int main(int argc, char *argv[])
 	break;
       case '?':
 	printUsage();
-	break;
+	return 0;
+  break;
       }
     }
 
@@ -119,6 +120,7 @@ int main(int argc, char *argv[])
     }
     else {
       printUsage();
+			return 0;
     }
   }
  
