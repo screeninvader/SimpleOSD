@@ -2,13 +2,14 @@
     SRCS    := simpleOSD.cpp
     OBJS    := ${SRCS:.cpp=.o} 
     DEPS    := ${SRCS:.cpp=.dep} 
-
+    DESTDIR := /
+    PREFIX  := /usr/
     CXXFLAGS = -I../ -O3 -Wall `pkg-config --cflags gtk+-2.0`
     LDFLAGS = -s 
     LIBS    = -lxosd  `pkg-config --libs gtk+-2.0`
 
     .PHONY: all clean distclean 
-    all:: ${TARGET} 
+    all: ${TARGET} 
 
     ifneq (${XDEPS},) 
     include ${XDEPS} 
@@ -23,8 +24,15 @@
     ${DEPS}: %.dep: %.cpp Makefile 
 	${CXX} ${CXXFLAGS} -MM $< > $@ 
 
-    clean:: 
+    clean:
 	-rm -f *~ *.o ${TARGET} 
 
-    distclean:: clean
+install:
+	mkdir -p ${DESTDIR}/${PREFIX}/bin
+	cp ${TARGET} ${DESTDIR}/${PREFIX}/bin
+
+uninstall:
+	rm ${DESTDIR}/${PREFIX}/${TARGET}
+
+    distclean: clean
 
