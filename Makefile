@@ -1,4 +1,4 @@
-    TARGET  := simpleOSD 
+    TARGET  := osd
     SRCS    := simpleOSD.cpp
     OBJS    := ${SRCS:.cpp=.o} 
     DEPS    := ${SRCS:.cpp=.dep} 
